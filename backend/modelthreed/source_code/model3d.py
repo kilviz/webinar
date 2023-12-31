@@ -136,7 +136,7 @@ class Box():
         #     if abs(percentX - percentCoordinateX) > (percentZ - percentCoordinateX):
         #         realX, realY, realZ = realZ, realY, realX
         #         if abs(percentY - percentCoordinateY) > abs(percentZ - percentCoordinateY):
-        #            realX, realY, realZ = realX, realZ, realY
+        #            realX, realY, realZ = realX, realZ, realY 
         # elif abs(percentX - percentCoordinateX) > (percentZ - percentCoordinateX):
         #     realX, realY, realZ = realZ, realY, realX
         #     if abs(percentY - percentCoordinateY) > abs(percentZ - percentCoordinateY):
@@ -385,10 +385,10 @@ class Model3d():
             "unpacked": self.unpacked_cargos_info
         }
 
-        return outputDict
-
         # with open("./Output/output.json", 'w') as fp:
         #     json.dump(outputDict, fp)
+
+        return outputDict
 
     def run(self):
         self.get_boxes()

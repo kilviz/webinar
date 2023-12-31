@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+
+
+{% block content %}
+{% if request.user.is_authenticated %}
+<p>Вы уже вошли в свой аккаунт. <a href={% url 'logout' %}>Сменить аккаунт</a> </p>
+    
+<p><a href='/main'>Рассчитать 3д модель коробок.</a>  </p>
+{% else %}
+
+<h1>{{ object.title }}</h1>
+
+    <form action="{% url 'authorize' %}?next=/main" method="post">
+
+        {% csrf_token %}
+
+        Логин <input type="text" name="username"><br>
+        Пароль <input type="password" name="password"><br>
+
+        <input type="submit" value="Авторизоваться">
+
+    </form>
+{% endif %}
+{% endblock %}

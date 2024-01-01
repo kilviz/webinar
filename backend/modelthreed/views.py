@@ -1,4 +1,5 @@
 import json
+import shutil
 
 from django.conf import settings
 from django.core.files.storage import default_storage
@@ -25,16 +26,18 @@ class ImageParserView(GenericViewSet):
 
         for image in serializer.validated_data['images']:
             default_storage.save('/'.join(['images', image.name]), image)
+        
 
         csv_name = default_storage.save(serializer.validated_data['csv_file'].name, serializer.validated_data['csv_file'])
 
         images_path = '/'.join([settings.MEDIA_ROOT, 'images/'])
-        bos_queue = '/'.join([settings.MEDIA_ROOT, csv_name])
+        box_queue = '/'.join([settings.MEDIA_ROOT, csv_name])
 
-        model = Model3d(imagesPath=images_path, boxQueue=bos_queue)
+        model = Model3d(imagesPath=images_path, boxQueue=box_queue)
         response_json = model.run()
 
         response = HttpResponse(json.dumps(response_json), content_type='text/plain; charset=UTF-8')
         response['Content-Disposition'] = ('attachment; filename=response.json')
-
+        shutil.rmtree(images_path,ignore_errors=True)
+        
         return response

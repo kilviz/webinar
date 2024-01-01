@@ -1,77 +1,13 @@
-# Инструкция, как развернурть проект
+# Описание проекта
 
-0. Необходимо иметь: python, python-dev, pip, venv/pipenv, python IDE (VSCode / PyCharm)
+Веб сайт позволяет по описанию и фотографиям создать 3д модель расположения коробок. На сайте реализована авторизация. Для входа можно использовать следующие данные:
+логин:  student
+пароль: k@6>2MN~+"R.8iL
 
-1. Создайте файл с переменными окружения:
+Помимо веб-форм можно использовать API. Методы REST Api находятся по ссылке: https://api.postman.com/collections/31108048-0ce4336d-c820-4178-948f-8dbf1ffdbb5f?access_key=PMAT-01HK2RJKF5NXK3HEC57J5CK4A5
 
-```
-cp example.env .env
-```
-
-2. Активируйте виртуальное окружение:
-
-* Если у вас установлен venv:
-
-    + Для Unix, MacOS:
+Для того чтобы поднять веб сайт используется докер. Для запуска перейдите в папку /docker и пропишите команду:
 
 ```
-
-python -m venv .
-sudo chmod -R 777 bin/
-source bin/activate
-
+docker-compose up -d
 ```
-*
-    + Для Windows:
-
-```
-
-python -m venv .
-Scripts/activate
-
-```
-
-* Если у вас установлен pipenv:
-
-```
-
-pipenv shell
-
-```
-
-3. Установите необходимые зависимости python
-
-* venv:
-
-```
-pip install -r requirements.txt
-```
-
-* pipenv:
-
-```
-pipenv install -r requirements.txt
-```
-
-4. Примените миграции:
-
-```
-python backend/manage.py migrate
-```
-
-5. Создайте учетную запись администратора:
-
-```
-python backend/manage.py createsuperuser
-```
-
-6. Запустите сервер django, чтобы убедиться, что все работает:
-
-```
-python backend/manage.py runserver
-
-```
-
-Затем откройте указанный в консоли адрес в браузере. Если все прошло успешно, вы увидите приветственное окно.
-student
-k@6>2MN~+"R.8iL

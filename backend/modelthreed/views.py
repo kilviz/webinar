@@ -26,6 +26,7 @@ class ImageParserView(GenericViewSet):
 
         for image in serializer.validated_data['images']:
             default_storage.save('/'.join(['images', image.name]), image)
+        
 
         csv_name = default_storage.save(serializer.validated_data['csv_file'].name, serializer.validated_data['csv_file'])
 

@@ -1,10 +1,8 @@
 {% extends 'base.html' %}
 
-
 {% block content %}
-{% if request.user.is_authenticated %}
+{%if request.user.is_authenticated%}
 <p>Вы уже вошли в свой аккаунт. <a href={% url 'logout' %}>Сменить аккаунт</a> </p>
-    
 <p><a href='/main'>Рассчитать 3д модель коробок.</a>  </p>
 {% else %}
 
